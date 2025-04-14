@@ -1,0 +1,31 @@
+void setup() {
+  // Start the Serial Monitor at 9600 baud rate
+  Serial.begin(9600);
+
+  // Set button pins as input with pull-up resistors
+  pinMode(8, INPUT_PULLUP);  // Button for thumb
+  pinMode(9, INPUT_PULLUP);  // Button for index
+  pinMode(10, INPUT_PULLUP); // Button for middle
+  pinMode(11, INPUT_PULLUP); // Button for ring
+  pinMode(12, INPUT_PULLUP); // Button for pinky
+}
+
+void loop() {
+  // Read and print the button states to the Serial Monitor
+  Serial.print("Thumb: ");
+  Serial.println(digitalRead(8));   // Button 1 (D8)
+
+  Serial.print("Index: ");
+  Serial.println(digitalRead(9));   // Button 2 (D9)
+
+  Serial.print("Middle: ");
+  Serial.println(digitalRead(10));  // Button 3 (D10)
+
+  Serial.print("Ring: ");
+  Serial.println(digitalRead(11));  // Button 4 (D11)
+
+  Serial.print("Pinky: ");
+  Serial.println(digitalRead(12));  // Button 5 (D12)
+
+  delay(500);  // Delay to reduce spamming the Serial Monitor
+}
