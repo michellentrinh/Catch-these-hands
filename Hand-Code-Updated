@@ -1,0 +1,72 @@
+#include <Servo.h>
+
+// Create servo objects for each finger
+Servo thumb, index, middle, ring, pinky;
+
+// Pin configuration for servos and buttons
+const int thumbServoPin = 3;
+const int indexServoPin = 4;
+const int middleServoPin = 5;
+const int ringServoPin = 6;
+const int pinkyServoPin = 7;
+
+const int thumbButtonPin = 8;
+const int indexButtonPin = 9;
+const int middleButtonPin = 10;
+const int ringButtonPin = 11;
+const int pinkyButtonPin = 12;
+
+// Define servo positions
+const int openAngle = 0;    // Open position
+const int closedAngle = 180; // Closed position
+
+void setup() {
+  // Attach the servos to their respective pins
+  thumb.attach(thumbServoPin);
+  index.attach(indexServoPin);
+  middle.attach(middleServoPin);
+  ring.attach(ringServoPin);
+  pinky.attach(pinkyServoPin);
+
+  // Set button pins as inputs with pull-up resistors
+  pinMode(thumbButtonPin, INPUT_PULLUP);
+  pinMode(indexButtonPin, INPUT_PULLUP);
+  pinMode(middleButtonPin, INPUT_PULLUP);
+  pinMode(ringButtonPin, INPUT_PULLUP);
+  pinMode(pinkyButtonPin, INPUT_PULLUP);
+}
+
+void loop() {
+  // Read button states and control servos accordingly
+  if (digitalRead(thumbButtonPin) == LOW) {
+    thumb.write(closedAngle);  // Close thumb when button is pressed
+  } else {
+    thumb.write(openAngle);    // Open thumb when button is released
+  }
+
+  if (digitalRead(indexButtonPin) == LOW) {
+    index.write(closedAngle);  // Close index when button is pressed
+  } else {
+    index.write(openAngle);    // Open index when button is released
+  }
+
+  if (digitalRead(middleButtonPin) == LOW) {
+    middle.write(closedAngle);  // Close middle when button is pressed
+  } else {
+    middle.write(openAngle);    // Open middle when button is released
+  }
+
+  if (digitalRead(ringButtonPin) == LOW) {
+    ring.write(closedAngle);    // Close ring when button is pressed
+  } else {
+    ring.write(openAngle);      // Open ring when button is released
+  }
+
+  if (digitalRead(pinkyButtonPin) == LOW) {
+    pinky.write(closedAngle);   // Close pinky when button is pressed
+  } else {
+    pinky.write(openAngle);     // Open pinky when button is released
+  }
+
+  delay(10); // Small delay for debounce stability
+}
